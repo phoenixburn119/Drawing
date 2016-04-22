@@ -28,7 +28,7 @@ public class DrawFrame extends JFrame
 		this.setContentPane(basePanel);
 		this.setResizable(false);
 		this.setTitle("Chatbot");
-		this.setSize(800,400);
+		this.setSize(1000,750);
 		this.setVisible(true);
 	}
 	

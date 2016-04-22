@@ -1,5 +1,6 @@
 package draw.view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -36,6 +37,14 @@ public class ShapePanel extends JPanel
 	{
 		super.paintComponent(currentGraphics);
 		
+		for(Rectangle current : rectangleList)
+		{
+			int red = (int)(Math.random() * (256));
+			int blue = (int)(Math.random() * (256));
+			int green = (int)(Math.random() * (256));
+			
+			mainGraphics.setColor(new Color(red,green,blue));
+			mainGraphics.fill(current);
 		
 		
 		
