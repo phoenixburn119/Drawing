@@ -1,10 +1,17 @@
 package draw.controller;
 
+import draw.view.DrawFrame;
+
 public class DrawController
 {
-	private DrawingFrame baseFrame;
+	private DrawFrame baseFrame;
 	
-	public 
+	public DrawController()
+	{
+		baseFrame = new DrawFrame(this);
+	}
+
+	
 	public void start()
 	{
 		
