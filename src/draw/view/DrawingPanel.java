@@ -1,9 +1,12 @@
 package draw.view;
 
 import java.awt.event.*;
+
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
+
 import draw.controller.DrawController;
 
 public class DrawingPanel extends JPanel
@@ -18,6 +21,7 @@ public class DrawingPanel extends JPanel
 	private JButton addTrianglePanel;
 	private JButton addPolygonPanel;
 	private JButton clearLists;
+	private JButton mysteryPanel;
 	private ShapePanel shapePanel;
 	private ArrayList<Rectangle> rectangleList;
 	
@@ -33,8 +37,7 @@ public class DrawingPanel extends JPanel
 		addTrianglePanel = new JButton("Add Triangle");
 		addPolygonPanel = new JButton("Add Polygon");
 		clearLists = new JButton("Clear Screen");
-		baseLayout.putConstraint(SpringLayout.NORTH, clearLists, 10, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, clearLists, 920, SpringLayout.WEST, this);
+		mysteryPanel = new JButton("It's a Mystery");
 		rectangleList = new ArrayList<Rectangle>();
 		shapePanel = new ShapePanel();
 		
@@ -56,11 +59,16 @@ public class DrawingPanel extends JPanel
 		this.add(addTrianglePanel);
 		this.add(addPolygonPanel);
 		this.add(clearLists);
+		this.add(mysteryPanel);
 		this.add(shapePanel);
 	}
 	
 	private void setupLayout()
 	{
+		baseLayout.putConstraint(SpringLayout.EAST, clearLists, 980, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, mysteryPanel, 10, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, mysteryPanel, 865, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, clearLists, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, addRectanglePanel, 155, SpringLayout.WEST, this);		
 		baseLayout.putConstraint(SpringLayout.NORTH, addSquarePanel, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, addSquarePanel, 270, SpringLayout.WEST, this);
@@ -83,6 +91,23 @@ public class DrawingPanel extends JPanel
 	
 	private void setupListeners()
 	{
+		addRectangleButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				for(int i = 0; i < 500; i++)
+				{
+					int xPosition = (int) (Math.random() * getWidth());
+					int yPosition = (int) (Math.random() * getWidth());
+					int width = (int) (Math.random() * 100);
+					int height = (int) (Math.random() * 100);
+				
+					Rectangle currentRectangle = new Rectangle(xPosition, yPosition, width, height);
+					rectangleList.add(currentRectangle);
+					repaint();
+				}
+			}
+		});
 		addRectanglePanel.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -142,6 +167,23 @@ public class DrawingPanel extends JPanel
 			{
 				shapePanel.clear();
 				repaint();
+			}
+		});
+		
+		mysteryPanel.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				for(int i = 0;i < 40;i++)
+				{
+				shapePanel.addRectangle();
+				shapePanel.addSquare();
+				shapePanel.addEllipse();
+				shapePanel.addCircle();
+				shapePanel.addTriangle();
+				shapePanel.addPolygon();
+				repaint();
+				}
 			}
 		});
 	}
