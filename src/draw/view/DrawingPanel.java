@@ -17,6 +17,7 @@ public class DrawingPanel extends JPanel
 	private JButton addCirclePanel;
 	private JButton addTrianglePanel;
 	private JButton addPolygonPanel;
+	private JButton clearLists;
 	private ShapePanel shapePanel;
 	private ArrayList<Rectangle> rectangleList;
 	
@@ -31,6 +32,9 @@ public class DrawingPanel extends JPanel
 		addCirclePanel = new JButton("Add Circle");
 		addTrianglePanel = new JButton("Add Triangle");
 		addPolygonPanel = new JButton("Add Polygon");
+		clearLists = new JButton("Clear Screen");
+		baseLayout.putConstraint(SpringLayout.NORTH, clearLists, 10, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, clearLists, 920, SpringLayout.WEST, this);
 		rectangleList = new ArrayList<Rectangle>();
 		shapePanel = new ShapePanel();
 		
@@ -51,6 +55,7 @@ public class DrawingPanel extends JPanel
 		this.add(addCirclePanel);
 		this.add(addTrianglePanel);
 		this.add(addPolygonPanel);
+		this.add(clearLists);
 		this.add(shapePanel);
 	}
 	
@@ -127,6 +132,15 @@ public class DrawingPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				shapePanel.addPolygon();
+				repaint();
+			}
+		});
+		
+		clearLists.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				shapePanel.clear();
 				repaint();
 			}
 		});
