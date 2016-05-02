@@ -1,9 +1,7 @@
 package draw.view;
 
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -23,6 +21,7 @@ public class DrawingPanel extends JPanel
 	private JButton clearLists;
 	private JButton mysteryPanel;
 	private ShapePanel shapePanel;
+	private GraphingPanel graphPanel;
 	private ArrayList<Rectangle> rectangleList;
 	
 	public DrawingPanel(DrawController baseController)
@@ -40,6 +39,7 @@ public class DrawingPanel extends JPanel
 		mysteryPanel = new JButton("It's a Mystery");
 		rectangleList = new ArrayList<Rectangle>();
 		shapePanel = new ShapePanel();
+		graphPanel = new GraphingPanel();
 		
 		
 		setupPanel();
@@ -61,10 +61,17 @@ public class DrawingPanel extends JPanel
 		this.add(clearLists);
 		this.add(mysteryPanel);
 		this.add(shapePanel);
+		this.add(graphPanel);
 	}
 	
 	private void setupLayout()
 	{
+		baseLayout.putConstraint(SpringLayout.EAST, shapePanel, 700, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, graphPanel, 60, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, graphPanel, 10, SpringLayout.EAST, shapePanel);
+		baseLayout.putConstraint(SpringLayout.SOUTH, graphPanel, -100, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, graphPanel, -20, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, shapePanel, 20, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.EAST, clearLists, 980, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, mysteryPanel, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, mysteryPanel, 865, SpringLayout.WEST, this);
@@ -81,9 +88,7 @@ public class DrawingPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, addEllipsePanel, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, addRectangleButton, 700, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, shapePanel, 60, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, shapePanel, 100, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, shapePanel, -100, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, shapePanel, 900, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.EAST, addRectangleButton, 160, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, addPolygonPanel, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, addRectanglePanel, 10, SpringLayout.NORTH, this);
