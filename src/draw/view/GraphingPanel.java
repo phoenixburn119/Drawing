@@ -24,7 +24,7 @@ public class GraphingPanel extends JPanel
 	
 	public void buildInfoList()
 	{
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 14; i++)
 		{
 			int width = (int)(Math.random() * 225);
 			infoList.add(width);
@@ -33,10 +33,10 @@ public class GraphingPanel extends JPanel
 	
 	public void buildGraphList()
 	{
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 14; i++)
 		{
 			int width = infoList.get(i);
-			int height = 20;
+			int height = 40;
 			int xPosition = 0;
 			int yPosition = i * height;
 			
