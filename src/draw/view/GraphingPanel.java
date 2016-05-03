@@ -18,8 +18,8 @@ public class GraphingPanel extends JPanel
 		graphList = new ArrayList<Rectangle>();
 		infoList = new ArrayList<Integer>();
 		
-		buildInfoList();
-		buildGraphList();
+		//buildInfoList();
+		//buildGraphList();
 	}
 	
 	public void buildInfoList()
@@ -29,6 +29,12 @@ public class GraphingPanel extends JPanel
 			int width = (int)(Math.random() * 225);
 			infoList.add(width);
 		}
+	}
+	
+	public void clearLists()
+	{
+		infoList.clear();
+		graphList.clear();
 	}
 	
 	public void buildGraphList()
