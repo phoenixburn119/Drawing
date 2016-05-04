@@ -79,11 +79,11 @@ public class ShapePanel extends JPanel
 	public void addTriangle()
 	{
 		int [] xPoints = new int[3];
-		xPoints[0] = (int)(Math.random() * 150);
-		xPoints[0] = (int)(Math.random() * 250);
-		xPoints[0] = (int)(Math.random() * 350);
+		xPoints[0] = (int)(Math.random() * 550);
+		xPoints[0] = (int)(Math.random() * 550);
+		xPoints[0] = (int)(Math.random() * 550);
 		
-		int [] yPoints = {(int)(int)(Math.random() * 250), (int)(Math.random() * 450), (int)(Math.random() * 250)};
+		int [] yPoints = {(int)(int)(Math.random() * 550), (int)(Math.random() * 550), (int)(Math.random() * 550)};
 		
 		Polygon triangle = new Polygon(xPoints, yPoints, 3);
 		triangleList.add(triangle);
@@ -97,8 +97,8 @@ public class ShapePanel extends JPanel
 		
 		for(int side = 0; side < numberOfSides; side++)
 		{
-			xPoints[side] = (int)(Math.random() * 200);
-			yPoints[side] = (int)(Math.random() * 200);
+			xPoints[side] = (int)(Math.random() * 500);
+			yPoints[side] = (int)(Math.random() * 500);
 		}
 		
 		Polygon myPolygon = new Polygon(xPoints, yPoints, numberOfSides);
